@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS User Group São Roque — EC2 Load Balancer Demo</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!--
+    METADADOS INJETADOS PELO USER DATA DA EC2
+    No User Data da instância, adicione o script userdata.sh
+    que substitui os placeholders abaixo antes de servir o site.
+
+    Se os placeholders NÃO forem substituídos (ex: rodando local),
+    o JS detecta e exibe "Nenhuma instância conectada".
+  -->
+  <meta name="ec2-instance-id"        content="{{INSTANCE_ID}}" />
+  <meta name="ec2-instance-type"      content="{{INSTANCE_TYPE}}" />
+  <meta name="ec2-availability-zone"  content="{{AZ}}" />
+  <meta name="ec2-public-ip"          content="{{PUBLIC_IP}}" />
+  <meta name="ec2-private-ip"         content="{{PRIVATE_IP}}" />
+  <meta name="ec2-region"             content="{{REGION}}" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="container">
+
+    <header>
+      <div class="logo">
+        <img
+          src="img/Logo UG ofc sem-fundo.png"
+          alt="AWS User Group São Roque"
+          class="logo-img"
+        />
+        <div class="logo-text">
+          AWS User Group
+          <span class="logo-sub">São Roque</span>
+        </div>
+      </div>
+      <div id="status-badge" class="badge badge--loading">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Verificando...</span>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ESTADO: SEM INSTÂNCIA -->
+      <section id="no-instance" class="card card--offline hidden">
+        <span class="offline-icon">⬡</span>
+        <h1 class="offline-title">Nenhuma instância conectada</h1>
+        <p class="offline-desc">
+          Este site não está sendo servido por uma instância EC2,<br/>
+          ou os metadados não foram injetados via User Data.
+        </p>
+        <div class="offline-hint">
+          <code>Rode o script <strong>userdata.sh</strong> ao iniciar a instância</code>
+        </div>
+      </section>
+
+      <!-- ESTADO: COM INSTÂNCIA -->
+      <section id="with-instance" class="hidden">
+
+        <div class="instance-hero">
+          <div class="instance-label">Você está conectado à instância</div>
+          <div class="instance-id" id="display-instance-id">—</div>
+          <div class="instance-az" id="display-az">—</div>
+        </div>
+
+        <div class="grid">
+
+          <div class="card" data-delay="0">
+            <div class="card-icon">🖥</div>
+            <div class="card-label">Tipo da Instância</div>
+            <div class="card-value" id="display-type">—</div>
+          </div>
+
+          <div class="card" data-delay="1">
+            <div class="card-icon">🌐</div>
+            <div class="card-label">IP Público</div>
+            <div class="card-value" id="display-public-ip">—</div>
+          </div>
+
+          <div class="card" data-delay="2">
+            <div class="card-icon">🔒</div>
+            <div class="card-label">IP Privado</div>
+            <div class="card-value" id="display-private-ip">—</div>
+          </div>
+
+          <div class="card" data-delay="3">
+            <div class="card-icon">📍</div>
+            <div class="card-label">Região</div>
+            <div class="card-value" id="display-region">—</div>
+          </div>
+
+        </div>
+
+        <div class="refresh-hint">
+          Atualize para ver o load balancer redirecionando para outra instância →
+          <button onclick="location.reload()">Recarregar</button>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <span>Gerado em <span id="timestamp">—</span> &nbsp;·&nbsp; AWS User Group São Roque &nbsp;·&nbsp; 📅 30 de Maio · 10h30 · FATEC São Roque</span>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
