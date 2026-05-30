@@ -3,6 +3,7 @@
 #########################################################
 # CONFIGURAÇÕES
 #########################################################
+# Subtitua "BUCKET_NAME" pelo nome do bucket criado
 
 BUCKET_NAME="workshop-usergroupsr"
 WEB_ROOT="/usr/share/nginx/html"
