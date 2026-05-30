@@ -332,7 +332,7 @@ O objetivo é automação total. Não precisamos de acesso SSH.
 
 | Campo | Valor |
 |---|---|
-| Security group | ec2-sg |
+| Security group | alb-sg |
 
 ---
 
