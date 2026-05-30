@@ -714,9 +714,9 @@ Não precisa alterar nada aqui — só confirmar que está na porta 80.
 
 | Configuração | Valor |
 |---|---|
-| Desired capacity | 2 |
-| Minimum capacity | 2 |
-| Maximum capacity | 4 |
+| Desired capacity | 3 |
+| Minimum capacity | 3 |
+| Maximum capacity | 6 |
 
 ---
 
@@ -949,28 +949,6 @@ EC2 → Auto Scaling Groups → [asg-workshop-site] → Edit → Health check gr
 | Application Load Balancer | Distribui o tráfego entre as instâncias em múltiplas AZs |
 | Security Groups | Controla o fluxo de rede entre ALB e EC2 |
 | IMDSv2 | Fornece metadados da instância de forma segura para o UserData |
-
----
-
-# Frases para Explicar no Workshop
-
-**Sobre IAM Role:**
-> "A EC2 assume uma IAM Role para acessar o bucket sem utilizar access keys. As credenciais são temporárias e rotacionadas automaticamente pela AWS."
-
-**Sobre ALB:**
-> "O Load Balancer distribui as requisições entre múltiplas instâncias. O visitante sempre acessa o mesmo DNS, mas cai em instâncias diferentes."
-
-**Sobre ASG:**
-> "O Auto Scaling Group garante alta disponibilidade. Se uma instância falhar, o ASG cria uma nova automaticamente, sem intervenção manual."
-
-**Sobre UserData:**
-> "O bootstrap da aplicação acontece automaticamente na inicialização da instância. Não precisamos de acesso SSH ou configuração manual."
-
-**Sobre S3:**
-> "O S3 centraliza os artefatos da aplicação. Todas as instâncias baixam do mesmo bucket, garantindo consistência."
-
-**Sobre IMDSv2:**
-> "O Instance Metadata Service permite que a instância conheça seus próprios dados — instance ID, AZ, IPs — sem precisar de nenhuma configuração externa."
 
 ---
 
