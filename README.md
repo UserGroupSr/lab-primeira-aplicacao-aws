@@ -313,7 +313,7 @@ Amazon Linux 2023 AMI
 ## Instance Type
 
 ```
-t3.micro
+t2.micro
 ```
 
 ---
